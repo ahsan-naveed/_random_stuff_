@@ -1,5 +1,5 @@
 {
-  "name": "graphql",
+  "name": "essts_react_gql",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -21,6 +21,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
+    "graphql": "^0.13.2",
     "nodemon": "^1.17.5"
   },
   "devDependencies": {
