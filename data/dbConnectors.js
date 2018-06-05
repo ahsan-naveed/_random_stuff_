@@ -9,9 +9,9 @@ mongoose.connect('mongodb://localhost/friends', {
 const friendSchema = new mongoose.Schema({
     firstName: { type: String },
     lastName: { type: String },
-    language: {type: String},
+    language: { type: String },
+    contacts: { type: Array },
     gender: { type: String },
-    contacts: {type: Array},
     email: { type: String },
     age: { type: Number },
 })
