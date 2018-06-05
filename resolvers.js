@@ -2,14 +2,15 @@ import idMaker from './utils';
 
 // in mem db
 class Friend {
-    constructor(id, {firstName, lastName, gender, language, email}) {
+    constructor(id, {firstName, lastName, gender, age, language, email, contacts}) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.language = language;
         this.email = email;
-        this.gender = this.gender;
-        
+        this.gender = gender;
+        this.age = age;
+        this.contacts = contacts;
     }
 }
 
