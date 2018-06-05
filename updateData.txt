@@ -1,26 +1,26 @@
 # get the id of issue to add a comment to
-query {
-  repositoryOwner(login: "ahsannaveed007") {
-    repository(name: "_random_stuff_") {
-      issues(first:1){
-        edges {
-          node {
-            id
-            title
-            comments(first: 1) {
-              edges {
-                node {
-                  id
-                  body
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+# query {
+#   repositoryOwner(login: "ahsannaveed007") {
+#     repository(name: "_random_stuff_") {
+#       issues(first:1){
+#         edges {
+#           node {
+#             id
+#             title
+#             comments(first: 1) {
+#               edges {
+#                 node {
+#                   id
+#                   body
+#                 }
+#               }
+#             }
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
 
 # mutation NewComment($input:AddCommentInput!) {
 #   addComment(input:$input) {
@@ -31,12 +31,11 @@ query {
 #   } 
 # }
 
-
-# Query vars
-{
-  "input": {
-    "clientMutationId": "23231",
-    "subjectId": "MDU6SXNzdWUzMjkzNDc1NjM",
-    "body": "Adding comment :wow:"
+# Add reaction mutation - run query above to get the comment id
+mutation NewReaction($input: AddReactionInput!) {
+  addReaction(input: $input) {
+    reaction {
+      content
+    }
   }
 }
