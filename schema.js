@@ -30,7 +30,7 @@ const schema = buildSchema(`
     }
 
     type Query {
-        friends: [Friend!]!
+        getFriend(id: ID): Friend
     }
 `)
 
