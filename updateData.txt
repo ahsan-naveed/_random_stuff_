@@ -39,3 +39,12 @@ mutation NewReaction($input: AddReactionInput!) {
     }
   }
 }
+
+# Query vars
+{
+  "input": {
+    "clientMutationId": "12347432",
+    "subjectId": "MDEyOklzc3VlQ29tbWVudDM5NDYyNDk5OA==",
+    "content": "HOORAY"
+  }
+}
