@@ -18,15 +18,22 @@ const friendDatabase = {}
 const gen = idMaker()
 
 // create resolver for schema - would fetch the actual data from DB 
-const resolvers = {
-    getFriend: ({id}) => {
-        return new Friend(id, friendDatabase[id])
+// resolver map
+export const resolvers = {
+    Query: {
+        getFriend: ({
+            id
+        }) => {
+            return new Friend(id, friendDatabase[id])
+        }
     },
-    createFriend: ({input}) => {
-        let id = gen.next().value
-        friendDatabase[id] = input;
-        return new Friend(id, input);
+    Mutation: {
+        createFriend: ({
+            input
+        }) => {
+            let id = gen.next().value
+            friendDatabase[id] = input;
+            return new Friend(id, input);
+        }
     }
 };
-
-export default resolvers;
