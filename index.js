@@ -10,7 +10,16 @@ app.get('/', (req, res) => {
 })
 
 // create resolver for schema
-const root = {hello: () => 'Hi! I am Ahsan'};
+const root = {friend: () => {
+    return {
+        id: "2309799",
+        firstName: "Ahsan",
+        lastName: "Naveed",
+        email: "anaveed at sfu",
+        language: "en",
+        gender: "M"
+    }
+}};
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
