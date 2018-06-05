@@ -1,0 +1,42 @@
+# get the id of issue to add a comment to
+query {
+  repositoryOwner(login: "ahsannaveed007") {
+    repository(name: "_random_stuff_") {
+      issues(first:1){
+        edges {
+          node {
+            id
+            title
+            comments(first: 1) {
+              edges {
+                node {
+                  id
+                  body
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+# mutation NewComment($input:AddCommentInput!) {
+#   addComment(input:$input) {
+#     clientMutationId
+#     subject {
+#       id
+#     }
+#   } 
+# }
+
+
+# Query vars
+{
+  "input": {
+    "clientMutationId": "23231",
+    "subjectId": "MDU6SXNzdWUzMjkzNDc1NjM",
+    "body": "Adding comment :wow:"
+  }
+}
