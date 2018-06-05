@@ -20,6 +20,7 @@
   "homepage": "https://github.com/ahsannaveed007/_random_stuff_#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "express-graphql": "^0.6.12",
     "nodemon": "^1.17.5"
   },
   "devDependencies": {
