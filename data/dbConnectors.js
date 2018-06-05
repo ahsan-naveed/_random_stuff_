@@ -2,9 +2,7 @@ import mongoose from 'mongoose';
 
 // Mongo Connection
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/friends', {
-    useMongoClient: true
-})
+mongoose.connect('mongodb://localhost/friends', {})
 
 const friendSchema = new mongoose.Schema({
     firstName: { type: String },

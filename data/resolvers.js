@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
-import { Friends } from './schema';
-import { resolve } from 'path';
+import { Friends } from './dbConnectors';
 
 // import idMaker from '../../utils';
 
@@ -32,7 +31,7 @@ export const resolvers = {
         }
     },
     Mutation: {
-        createFriend: ({
+        createFriend: (root, {
             input
         }) => {
             // let id = gen.next().value
@@ -40,18 +39,18 @@ export const resolvers = {
             // return new Friend(id, input);
 
             const newFriend = new Friends({
-                firstName = input.firstName,
-                lastName = input.lastName,
-                email = input.email,
-                age = input.age,
-                gender = input.gender,
-                language = input.language,
-                contacts = input.contacts
+                firstName: input.firstName,
+                lastName: input.lastName,
+                email: input.email,
+                age: input.age,
+                gender: input.gender,
+                language: input.language,
+                contacts: input.contacts
             });
 
             newFriend.id = newFriend._id;
 
-            return new Promise((resolve, object) => {
+            return new Promise((resolve, reject) => {
                 newFriend.save(err => {
                     if (err) reject(err)
                     else resolve(newFriend)
