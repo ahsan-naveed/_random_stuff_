@@ -1,0 +1,165 @@
+# query {
+#   __schema {
+#     queryType {
+#       name
+#       description
+#       fields {
+#         name
+#         description
+#         isDeprecated
+#         deprecationReason
+#       }
+#     }
+#   }
+# }
+
+
+# query {
+#   __type(name: "Repository") {
+#     name
+#     kind
+#     description
+#   }
+# }
+
+# aliases to query repos with same owner
+# query {
+#   graphqlProject: repository(name: "graphql", owner:"facebook") {
+#     id
+#     name
+#     description
+#     createdAt
+#     homepageUrl
+#   }
+#   reactProject: repository(name: "react", owner:"facebook") {
+#     id
+#     name
+#     description
+#     createdAt
+#     homepageUrl
+#   }
+# }
+
+# fragments: reusable sets of fields that can be used in multiple queries
+# fragment repoFields on Repository {
+#   	id
+#     description
+#     homepageUrl
+# }
+
+# query {
+#   graphqlProject: repository(name: "graphql", owner:"facebook") {
+#     ...repoFields
+#     name
+#     createdAt
+#   }
+#   reactProject: repository(name: "react", owner:"facebook") {
+#     ...repoFields
+#     name
+#     createdAt
+#   }
+# }
+
+# Nested queries (connections, edges, nodes)
+# query {
+#   viewer {
+#     name
+#     id
+#     repositories(last: 5) {
+#       edges {
+#         node {
+#           id
+#           name
+#           issues(first: 5) {
+#             edges {
+#               node {
+#                 id 
+#                 title
+#               }
+#             }
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
+
+# Multiple Nested queries
+# query {
+#   repository(name: "opensource.guide", owner: "github") {
+#     name
+#     description
+#     watchers(first: 5){
+#       edges {
+#         node {
+#           id
+#           name
+#           company
+#         }
+#       }
+#     }
+#     pullRequests(last: 4){
+#       edges {
+#         node {
+#           id 
+#           author {
+#             login
+#             avatarUrl
+#             resourcePath
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
+
+# pagination
+# query {
+#   repository(name:"graphql", owner: "facebook") {
+#     id
+#     issues(last: 5) {
+#       edges {
+#         node {
+#           id
+#           number
+#           title
+#           state
+#         }
+#       }
+#     } 
+#   }
+# }
+
+# named queries / op name
+# query FirstFiveOrgMembers {
+#   organization(login: "facebook") {
+#     id
+#     name
+#     members(first: 5) {
+#       edges{
+#         node {
+#           id
+#           name
+#           isDeveloperProgramMember
+#         }
+#       }
+#     }
+#   }
+# }
+
+# dynamic queries
+query FirstNOrgMembers($login: String!, $n: Int!) {
+  organization(login: $login) {
+    id
+    name
+    members(first: $n) {
+      edges{
+        node {
+          id
+          name
+          isDeveloperProgramMember
+        }
+      }
+    }
+  }
+}
