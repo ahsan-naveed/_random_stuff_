@@ -1,4 +1,4 @@
-import idMaker from './utils';
+import idMaker from '../../utils';
 
 // in mem db
 class Friend {

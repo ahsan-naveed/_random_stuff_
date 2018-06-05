@@ -2,7 +2,7 @@ import express from 'express';
 import graphqlHTTP from 'express-graphql'
 import randomBytes from 'crypto';
 
-import { schema } from './schema';
+import { schema } from './data/schema';
 
 const app = express()
 
