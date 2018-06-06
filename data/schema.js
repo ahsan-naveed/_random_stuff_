@@ -58,6 +58,7 @@ const typeDefs = `
 
     type Mutation {
         createFriend(input: FriendInput): Friend
+        updateFriend(input: FriendInput): Friend
     }
 
     type Query {
@@ -65,4 +66,6 @@ const typeDefs = `
     }
 `;
 
-export const schema = makeExecutableSchema({typeDefs, resolvers});
+const schema = makeExecutableSchema({typeDefs, resolvers});
+
+export { schema }

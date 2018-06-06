@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
-import { Friends, Aliens } from './dbConnectors';
+import {
+    Friends
+} from './dbConnectors';
+
 
 // import idMaker from '../../utils';
 
@@ -27,8 +30,8 @@ export const resolvers = {
         getFriend: ({
             id
         }) => {
-            return new Friend(id, friendDatabase[id])
-        }
+            return new Friend(id, friendDatabase[id]);
+        },
     },
     Mutation: {
         createFriend: (root, {
@@ -41,21 +44,35 @@ export const resolvers = {
             const newFriend = new Friends({
                 firstName: input.firstName,
                 lastName: input.lastName,
-                email: input.email,
-                age: input.age,
                 gender: input.gender,
+                age: input.age,
                 language: input.language,
+                email: input.email,
                 contacts: input.contacts
             });
 
             newFriend.id = newFriend._id;
 
             return new Promise((resolve, reject) => {
-                newFriend.save(err => {
+                newFriend.save((err) => {
                     if (err) reject(err)
                     else resolve(newFriend)
                 })
             })
+        },
+        updateFriend: (root, {
+            input
+        }) => {
+            return new Promise((resolve, reject) => {
+                Friends.findOneAndUpdate({
+                    _id: input.id
+                }, input, {
+                    new: true
+                }, (err, friend) => {
+                    if (err) reject(err)
+                    else resolve(friend)
+                })
+            })
         }
-    }
+    },
 };
