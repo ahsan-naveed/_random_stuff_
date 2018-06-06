@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Friends } from './dbConnectors';
+import { Friends, Aliens } from './dbConnectors';
 
 // import idMaker from '../../utils';
 
