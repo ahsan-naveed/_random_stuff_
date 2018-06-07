@@ -51,6 +51,13 @@ const typeDefs = `
         contacts: [ContactInput]
     }
 
+    input AlienInput {
+        id: ID @unique
+        firstName: String!
+        lastName: String
+        planet: String
+    }
+
     input ContactInput {
         firstName: String!
         lastName: String
@@ -61,6 +68,9 @@ const typeDefs = `
         createFriend(input: FriendInput): Friend
         updateFriend(input: FriendInput): Friend
         deleteFriend(id: ID!): String
+        createAlien(input: AlienInput): Alien
+        updateAlien(input: AlienInput): Alien
+        deleteAlien(id: ID!): String
     }
 
     type Query {

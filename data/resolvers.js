@@ -86,5 +86,14 @@ export const resolvers = {
                 })
             })
         },
+        createAlien: ({ input }) => {
+            Aliens.create({
+                firstName: input.firstName,
+                lastName: input.lastName,
+                planet: input.planet,
+            });
+        },
+        updateAlien: () => {},
+        deleteAlien: () => {},
     },
 };
