@@ -26,13 +26,21 @@ import { Friends, Aliens } from './dbConnectors';
 export const resolvers = {
     Query: {
         getFriend: (root, { id }) => {
-            return new Promise((resolve, object) => {
+            return new Promise((resolve, reject) => {
                 Friends.findById(id, (err, friend) => {
                     if (err) reject(err)
                     else resolve(friend)
                 })
             })
         },
+        getFriends: (root) => {
+            return new Promise((resolve, reject) => {
+                Friends.find({}, (err, friends) => {
+                    if (err) reject(err)
+                    else resolve(friends)
+                })
+            })
+        }, 
         getAliens: () => {
             return Aliens.findAll()
         }

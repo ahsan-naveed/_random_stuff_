@@ -64,7 +64,8 @@ const typeDefs = `
     }
 
     type Query {
-        getFriend(id: ID): Friend
+        getFriend(id: ID!): Friend
+        getFriends: [Friend]
         getAliens: [Alien]
     }
 `;
