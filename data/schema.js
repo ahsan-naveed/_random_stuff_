@@ -1,3 +1,8 @@
+/*
+** NOTE: Delete mutations will not return the deleted object
+** as it is no longer exists in the database instead return 
+** a success message
+*/ 
 
 import { makeExecutableSchema } from 'graphql-tools';
 import { resolvers } from './resolvers';
@@ -29,10 +34,6 @@ const typeDefs = `
         isFriend: Boolean
     }
 
-    type Friends {
-        friend: Friend
-    }
-
     enum Gender {
         MALE
         FEMALE
@@ -59,13 +60,16 @@ const typeDefs = `
     type Mutation {
         createFriend(input: FriendInput): Friend
         updateFriend(input: FriendInput): Friend
+        deleteFriend(id: ID!): String
     }
 
     type Query {
         getFriend(id: ID): Friend
+        getAliens: [Alien]
     }
 `;
 
+// fast mapping of type definitions and resolvers
 const schema = makeExecutableSchema({typeDefs, resolvers});
 
 export { schema }
