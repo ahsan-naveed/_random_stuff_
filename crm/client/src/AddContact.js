@@ -17,7 +17,16 @@ const AddContact = () => {
     let firstName;
     let lastName;
     return (
-        <Mutation mutation={CREATE_CONTACT}>
+        <Mutation 
+            mutation={CREATE_CONTACT}
+            update={(cache, { data: { createContact } }) => {
+                const { contacts } = cache.readQuery({ query: contactsListQuery });
+                cache.writeQuery({
+                  query: contactsListQuery,
+                  data: { contacts: contacts.concat([createContact]) }
+                });
+            }}
+            >
             {(createContact, { loading, error }) => (
                 <div>
                     <form
