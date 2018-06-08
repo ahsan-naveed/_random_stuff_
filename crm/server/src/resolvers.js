@@ -24,12 +24,12 @@ export const resolvers = {
     },
 
     Mutation: {
-        createContact: (root, {input}) => {
+        createContact: (root, args) => {
             contacts.push(
                 {
                     id: contacts.length + 1,
-                    firstName: input.firstName,
-                    lastName: input.lastName
+                    firstName: args.firstName,
+                    lastName: args.lastName
                 }
             )
             return contacts[contacts.length - 1]

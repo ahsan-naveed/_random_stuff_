@@ -2,22 +2,21 @@ import gql from 'graphql-tag';
 import React from 'react';
 import { Query } from 'react-apollo';
 
+export const contactsListQuery = gql`{
+    contacts {
+    id
+    firstName
+    lastName
+    }
+}
+`
+
 export default () => {
   return (
  
             
-            <Query
-                    query={gql`
-                            {
-                         contacts {
-                            id
-                            firstName
-                            lastName
-                        }
-                    }
-                    `}
-                >
-                    {({ loading, error, data }) => {
+            <Query query={contactsListQuery}>
+                {({ loading, error, data }) => {
                     if (loading) return <p>Loading...</p>;
                     if (error) return <p>{error.message}</p>;
 

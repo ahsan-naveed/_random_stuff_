@@ -12,14 +12,8 @@ import { resolvers } from './resolvers';
 // building schema
 export const typeDefs = `
     type Contact {
-        id: ID!
+        id: ID
         firstName: String
-        lastName: String
-    }
-
-    input ContactInput {
-        id: ID! @unique
-        firstName: String!
         lastName: String
     }
 
@@ -28,7 +22,7 @@ export const typeDefs = `
     }
 
     type Mutation {
-        createContact(input: ContactInput): Contact
+        createContact(firstName: String!, lastName: String): Contact
     }
 `;
 

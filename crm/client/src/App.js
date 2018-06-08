@@ -7,6 +7,7 @@ import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
 
 import Contacts from './Contacts';
+import AddContact from './AddContact';
 import './App.css';
 
 const client = new ApolloClient({
@@ -36,6 +37,7 @@ class App extends Component {
             <h1 className="App-title">CRM</h1>
           </header>
           <div className="App-intro">
+            <AddContact />
             <Contacts/>
           </div>
         </div>
