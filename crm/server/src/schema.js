@@ -7,7 +7,7 @@
 
 import { makeExecutableSchema, addMockFunctionsToSchema} from 'graphql-tools';
 
-// import { resolvers } from './resolvers';
+import { resolvers } from './resolvers';
 
 // building schema
 export const typeDefs = `
@@ -17,15 +17,25 @@ export const typeDefs = `
         lastName: String
     }
 
+    input ContactInput {
+        id: ID! @unique
+        firstName: String!
+        lastName: String
+    }
+
     type Query {
         contacts: [Contact]
+    }
+
+    type Mutation {
+        createContact(input: ContactInput): Contact
     }
 `;
 
 // fast mapping of type definitions and resolvers
-const schema = makeExecutableSchema({typeDefs});
+const schema = makeExecutableSchema({typeDefs, resolvers});
 
-addMockFunctionsToSchema({schema});
+// addMockFunctionsToSchema({schema});
 
 
 export { schema }
